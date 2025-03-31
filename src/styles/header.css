@@ -1,0 +1,57 @@
+header {
+    position: fixed;
+    background-color: var(--main-color);
+    display: flex;    
+    align-items: center;
+    justify-content: space-between;
+    width: 100vw;
+    padding: 0 20px;
+    height: 60px;
+    
+}
+
+.brand-logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--font-color-dark);
+    text-decoration: none;
+
+    
+}
+
+.brand-logo-text{
+    display: flex;
+    font-size: 20px;
+    color: var(--font-color-dark);
+    
+}
+.brand-logo-icon img{
+    max-width: 40px;
+    max-height: 40px;
+    object-fit: contain;
+}
+.btn-nav{
+    margin-left: 15px;
+    color: var(--font-color-dark);
+    background-color: var(--main-color);
+    font-size: 25px;
+    border: none;
+    cursor: pointer;
+    
+}
+.btn-dark{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--font-color-light);
+    background-color: var(--main-color-darker);
+    font-size: 15px;
+    font-weight: var(--text-font-weight); ;
+    text-decoration: none;
+    padding: 10px 8px ;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    line-height: 1;
+}

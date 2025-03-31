@@ -1,0 +1,11 @@
+
+:root{
+    --main-color: #ffffff;
+    --font-color-light: #ffffff;
+    --font-color-dark: #1d1c1d;
+    --main-color-darker: #611f69;
+    --main-color-dark: #9602c7;
+    --text-font-family: 'Lato', sans-serif;
+    --text-font-weight: bold;
+    --text-font-size: 16px;
+}
