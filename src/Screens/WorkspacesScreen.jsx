@@ -1,24 +1,24 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import AuthContextProvider, {AuthContext} from '../Context/AuthContext';
+import AuthContextProvider, { AuthContext } from '../Context/AuthContext';
 import useApiRequest from '../hooks/useApiRequest';
 import ENVIROMENT from '../config/ENVIROMENT';
 import { useForm } from '../hooks/useForm';
 
 
 const WorkspacesScreen = () => {
-    const initialFormState = { 
+    const initialFormState = {
         workspace: ''
     }
     const username = sessionStorage.getItem('username')
     const user_id = sessionStorage.getItem('user_id')
-    const url=`${ENVIROMENT.URL_API}/api/workspace/${user_id}`
+    const url = `${ENVIROMENT.URL_API}/api/workspace/${user_id}`
     const authorization_token = sessionStorage.getItem('authorization_token')
 
-    const {responseApiState, getRequest} = useApiRequest(url)
+    const { responseApiState, getRequest } = useApiRequest(url)
 
-    const {formState, handleChangeInput} = useForm(initialFormState)
-    
+    const { formState, handleChangeInput } = useForm(initialFormState)
+
     useEffect(() => {
         const getWorkspaces = async () => {
             try {
@@ -27,18 +27,37 @@ const WorkspacesScreen = () => {
                 console.error("Error al obtener workspaces:", error);
             }
         };
-    
+
         getWorkspaces(); // Llamada inicial
     }, []); //
-    
 
-    
+
+
     console.log('respone: ', responseApiState.payload);
     const workspaces = responseApiState.payload?.data?.workspaces || [];
 
 
     return (
         <div>
+            <header>
+                <div className="brand-logo">
+                    <div className="brand-logo-icon">
+                        <img src={logo} alt="" />
+                    </div>
+                    <div className="brand-logo-text">
+                        <h2>stack</h2>
+                    </div>
+                </div>
+                <div className="brand-logo">
+                    <Link className={"btn-dark"} to={'/register'}>
+                        COMENZAR
+                    </Link>
+                    <button className="btn-nav">
+                        <i className="bi bi-list"></i>
+                    </button>
+                </div>
+            </header>
+
             <h1>WorkspaceScreen</h1>
             <h2>Bienvenido {username}</h2>
             <div>
