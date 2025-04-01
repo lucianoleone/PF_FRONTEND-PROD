@@ -4,7 +4,9 @@ import AuthContextProvider, { AuthContext } from '../Context/AuthContext';
 import useApiRequest from '../hooks/useApiRequest';
 import ENVIROMENT from '../config/ENVIROMENT';
 import { useForm } from '../hooks/useForm';
-
+import logo from '../assets/images/logo-stack.jpg'
+import '../styles/global.css'
+import LinkLogo from '../Components/LinkLogo';
 
 const WorkspacesScreen = () => {
     const initialFormState = {
@@ -30,68 +32,114 @@ const WorkspacesScreen = () => {
 
         getWorkspaces(); // Llamada inicial
     }, []); //
-
-
-
-    console.log('respone: ', responseApiState.payload);
     const workspaces = responseApiState.payload?.data?.workspaces || [];
 
 
     return (
         <div>
             <header>
+                
+                    <LinkLogo />
+                
                 <div className="brand-logo">
-                    <div className="brand-logo-icon">
-                        <img src={logo} alt="" />
-                    </div>
-                    <div className="brand-logo-text">
-                        <h2>stack</h2>
-                    </div>
-                </div>
-                <div className="brand-logo">
-                    <Link className={"btn-dark"} to={'/register'}>
-                        COMENZAR
-                    </Link>
                     <button className="btn-nav">
                         <i className="bi bi-list"></i>
                     </button>
                 </div>
             </header>
-
-            <h1>WorkspaceScreen</h1>
-            <h2>Bienvenido {username}</h2>
-            <div>
-                {responseApiState.loading && <p>Cargando...</p>}
-                {responseApiState.error && <p>Error: {responseApiState.error}</p>}
-                {workspaces.length > 0 ? (
-                    <ul>
-                        {workspaces.map((workspace) => (
-                            <li key={workspace._id}>
-                                {/* Solo mostrar el nombre del workspace */}
-                                {workspace.name}
-                            </li>
-                        ))}
-                    </ul>
-                ) : (
-                    <p>No tienes workspaces.</p>
-                )}
+            <div className='register-screen'>
+                <div>
+                    <h2>Bienvenido {username}</h2>
+                </div>
+                <div className='input-container'>
+                    {responseApiState.loading && <p>Cargando...</p>}
+                    {responseApiState.error && <p>Error: {responseApiState.error}</p>}
+                    {workspaces.length > 0 ? (
+                        <ul>
+                            {workspaces.map((workspace) => (
+                                <li style={{ listStyle: 'none' }} key={workspace._id}>
+                                    <Link to={`/workspace/${workspace._id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                                        {workspace.name}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    ) : (
+                        <p>No tienes workspaces.</p>
+                    )}
+                </div>
+                <div>
+                    <form>
+                        <div className='input-container'>
+                            <label htmlFor="workspace">Crea un nuevo workspace </label>
+                            <input
+                                type="text"
+                                id="workspace"
+                                name="workspace"
+                                value={formState.workspace}
+                                onChange={handleChangeInput}
+                            />
+                        </div>
+                        <div className='input-container'>
+                            <button className='btn-dark' type="submit">Crear</button>
+                        </div>
+                    </form>
+                </div>
             </div>
             <div>
-                <form>
-                    <div className='input-container'>
-                        <label htmlFor="workspace">Crea un nuevo workspace </label>
-                        <input
-                            type="text"
-                            id="workspace"
-                            name="workspace"
-                            value={formState.workspace}
-                            onChange={handleChangeInput}
-                        />
+                <header>
+                    <div className="brand-logo">
+                        <div className="brand-logo-icon">
+                            <img src={logo} alt="" />
+                        </div>
+                        <div className="brand-logo-text">
+                            <h2>stack</h2>
+                        </div>
                     </div>
-                    <div className='input-container'>
-                        <button className='btn-dark' type="submit">Crear</button>
+                    <div className="brand-logo">
+                        <button className="btn-nav">
+                            <i className="bi bi-list"></i>
+                        </button>
                     </div>
-                </form>
+                </header>
+
+                <div className='input-container'>
+                    <h1>WorkspaceScreen</h1>
+                    <h2>Bienvenido {username}</h2>
+                </div>
+                <div>
+                    {responseApiState.loading && <p>Cargando...</p>}
+                    {responseApiState.error && <p>Error: {responseApiState.error}</p>}
+                    {workspaces.length > 0 ? (
+                        <ul>
+                            {workspaces.map((workspace) => (
+                                <li key={workspace._id}>
+                                    {/* Solo mostrar el nombre del workspace */}
+                                    {workspace.name}
+                                </li>
+                            ))}
+                        </ul>
+                    ) : (
+                        <p>No tienes workspaces.</p>
+                    )}
+                </div>
+                <div>
+                    <form>
+                        <div className='input-container'>
+                            <label htmlFor="workspace">Crea un nuevo workspace </label>
+                            <input
+                                type="text"
+                                id="workspace"
+                                name="workspace"
+                                value={formState.workspace}
+                                onChange={handleChangeInput}
+                            />
+                        </div>
+                        <div className='input-container'>
+                            <button className='btn-dark' type="submit">Crear</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     );

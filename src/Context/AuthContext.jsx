@@ -15,6 +15,8 @@ const AuthContextProvider = ({ children }) => {
     }, [])
     const logout = () => {
         sessionStorage.removeItem('authorization_token')
+        sessionStorage.removeItem('username')
+        sessionStorage.removeItem('user_id')
         setIsAuthenticatedState(false)
         //console.log(' Funcion de logout, el valor de isAuthenticatedState es', isAuthenticatedState)
     }

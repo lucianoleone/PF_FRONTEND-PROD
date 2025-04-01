@@ -3,7 +3,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import '../styles/global.css'
 import { useForm } from '../hooks/useForm'
 import useApiRequest from '../hooks/useApiRequest'
-import logo from '../assets/images/logo-stack.jpg'
+import LinkLogo from '../Components/LinkLogo'
+import StartButton from '../Components/StartButton'
 import ENVIROMENT from '../config/ENVIROMENT'
 import AuthContextProvider, { AuthContext } from '../Context/AuthContext'
 
@@ -38,22 +39,8 @@ const LoginScreen = () => {
     return (
         <div>
             <header>
-                <div className="brand-logo">
-                    <div className="brand-logo-icon">
-                        <img src={logo} alt="" />
-                    </div>
-                    <div className="brand-logo-text">
-                        <h2>stack</h2>
-                    </div>
-                </div>
-                <div className="brand-logo">
-                    <Link className={"btn-dark"} to={'/register'}>
-                        COMENZAR
-                    </Link>
-                    <button className="btn-nav">
-                        <i className="bi bi-list"></i>
-                    </button>
-                </div>
+                <LinkLogo />
+                <StartButton />
             </header>
 
             <div className={"login-screen"}>

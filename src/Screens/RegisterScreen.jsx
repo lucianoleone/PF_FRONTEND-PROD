@@ -4,7 +4,7 @@ import '../styles/global.css';
 import ENVIROMENT from '../config/ENVIROMENT.js';
 import useApiRequest from "../hooks/useApiRequest";
 import { Link } from "react-router-dom";
-import logo from '../assets/images/logo-stack.jpg'
+import LinkLogo from "../Components/LinkLogo.jsx";
 
 
 const RegisterScreen = () => {
@@ -25,14 +25,7 @@ const RegisterScreen = () => {
     return (
         <div>
             <header>
-                <div className="brand-logo">
-                    <div className="brand-logo-icon">
-                        <img src={logo} alt="" />
-                    </div>
-                    <div className="brand-logo-text">
-                        <h2>stack</h2>
-                    </div>
-                </div>
+                <LinkLogo />
                 <div className="brand-logo">
                     <Link className={"btn-dark"} to={'/login'}>
                         INGRESAR
